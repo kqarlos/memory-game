@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navbar from "./components/Navbar";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Navbar />
   );
 }
 
 export default App;
+
+
+// Go to package json(top), add new key called homepage, value is link copied from GitHub 
+// Npm install --save gh-pages
+// Back to package json, under scripts, add two keys
+// Add predeploy: npm run build
+// Add deploy: gh-pages -d build
+// Terminal then npm run deploy
+// Under setting GitHub, source to gh-pages branch
