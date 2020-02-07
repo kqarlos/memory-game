@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Game from "./pages/Game";
+import GameModel from "./utils/GameModel";
+import GameContext from "./utils/GameContext";
 
 
 
 function App() {
+  const gameModel = GameModel();
+
+  useEffect(() => {
+    console.log("App: Game Model");
+    console.log(gameModel);
+  }, [gameModel]);
+
   return (
 
     <Router>
       <div>
         <Navbar />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/Game" component={Game} />
+        <GameContext.Provider value={gameModel}>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/Game" component={Game} />
+        </GameContext.Provider>
+
 
       </div>
     </Router>

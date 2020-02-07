@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import GameContext from "../../utils/GameContext";
+import API from "../../utils/API";
 
-function Game() {
+const Game = () => {
+    const gameContext = useContext(GameContext);
+
     return (
-        <div class="container mt-4">
-            <div class="jumbotron text-center y">
-                <h1 class="display-4">Go!</h1>
+        <div className="container mt-4">
+            <div className="jumbotron text-center">
+                <h1 className="display-4">Go!</h1>
                 
             </div>
         </div>
