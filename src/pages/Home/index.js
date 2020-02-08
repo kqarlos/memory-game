@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 // import GameContext from "../../utils/GameContext";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
 
 const Home = ({ search }) => {

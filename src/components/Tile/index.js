@@ -1,14 +1,12 @@
 import React from "react";
 import "./style.css";
 
-function Tile({image}) {
+function Tile({ image }) {
     return (
-
-        <div className="card">
-            <img className="card-img-top" src={image} alt="Card image cap" />
-        </div>
+            <div className="col-4">
+                <img className="mb-3 img-thumbnail" src={image} alt={image} />
+            </div>
     );
-
 }
 
 export default Tile;

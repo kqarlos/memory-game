@@ -9,8 +9,6 @@ import Game from "./pages/Game";
 import API from "./utils/API";
 
 
-
-
 function App() {
   // const gameModel = GameModel();
   const [gameState, setGameState] = useState({
@@ -44,12 +42,12 @@ function App() {
     // .catch(err => gameModel.setError(err));
   }
 
-  useEffect(() => {
-    // console.log("+++++++++++++++++++++++++++++++++++");
-    // console.log("APP: GAME STATE");
-    // console.log(gameState);
-    // console.log("+++++++++++++++++++++++++++++++++++");
-  }, []);
+  // useEffect(() => {
+  //   // console.log("+++++++++++++++++++++++++++++++++++");
+  //   // console.log("APP: GAME STATE");
+  //   // console.log(gameState);
+  //   // console.log("+++++++++++++++++++++++++++++++++++");
+  // }, []);
 
   return (
 
