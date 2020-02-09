@@ -27,7 +27,13 @@ function App() {
         if (res.data.status === "error") {
           throw new Error(res.data.message);
         }
-        gameState.result = res.data.data;
+        setGameState({
+          theme: gameState.theme,
+          result: res.data.data,
+          gameOver: false,
+          clicked: {}
+        });
+        // gameState.result = res.data.data;
         console.log("GAME STATE AFTER API SEARCH")
         console.log(gameState);
       })
@@ -35,11 +41,10 @@ function App() {
 
   function click(index) {
     if (gameState.clicked[index]) {
-      gameState.gameOver = true;
       setGameState({
         theme: "",
         result: [],
-        gameOver: false,
+        gameOver: true,
         clicked: {}
       });
     } else {
@@ -76,7 +81,7 @@ function App() {
       <div>
         <Navbar />
         <Route exact path="/memory-game/" render={(props) => (<Home {...props} search={search} />)} />
-        <Route exact path="/memory-game/Game" render={(props) => (<Game {...props} click={click} result={gameState.result} gameOver={props.gameOver} />)} />
+        <Route exact path="/memory-game/Game" render={(props) => (<Game {...props} click={click} result={gameState.result} gameOver={gameState.gameOver} />)} />
 
       </div>
     </Router>

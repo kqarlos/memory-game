@@ -4,6 +4,7 @@ Choose a game theme and start playing. Only click each image once. Click twice a
 
 ## Getting Started
 
+Run the application with npm start
 
 
 ## Site Pictures
@@ -30,24 +31,50 @@ Choose a game theme and start playing. Only click each image once. Click twice a
 
   function click(index) {
     if (gameState.clicked[index]) {
-      gameState.gameOver = true;
+      setGameState({
+        theme: "",
+        result: [],
+        gameOver: true,
+        clicked: {}
+      });
     } else {
       gameState.clicked[index] = true;
-      gameState.result = gameState.result.sort(() => Math.random() - 0.5);
+      setGameState({
+        theme: gameState.theme,
+        result: shuffle(gameState.result),
+        gameOver: gameState.gameOver,
+        clicked: gameState.clicked
+      });
     }
+    console.log("GAME STATE AFTER CLICK")
+    console.log(gameState);
   }
     
 ```
-* This function updates the _clicked_ object from the game state to keep track of the images that are clicked by th user. Since the images are shuffled after every click, the "index" refers to the source link for the image instead of an actual index.
+* This function updates the _gameState_. The game logic depends on the _clicked_ object. This object keeps track of the images that are clicked by the user. Since the images are shuffled after every click, the "index" refers to the source link for the image instead of an actual index of the image in the _result_ array. The _gameState_ is updated after every click so that either the shuffle images are displayed to the user if the game is not over, or display a message and a button to go back if the game is over. 
 
 
-2. 
+2. Conditional rendering
 
 ```javascript
 
+    renderPage() {
+        if (this.props.gameOver) {
+            return (
+                <div>
+                    <h1 className="display-4 mb-3">GAME OVER!!</h1>
+                    <Link to="/memory-game/" className="btn btn-warning btn-lg" role="button">
+                        Go Back <i className="fas fa-gamepad"></i>
+                    </Link>
+                </div>
+            );
+        } else {
+            return (<h1 className="display-4 mb-3">Click each image only once... Go!</h1>)
+        }
+    }
 
 ```
-* Description:
+* It renders an short instruction message if the game is still going. If the game is over it will display a message of game over and a button to go back to the home page.
 
 
 ## Available Scripts for cloned repos
