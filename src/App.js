@@ -59,8 +59,8 @@ function App() {
     <Router>
       <div>
         <Navbar />
-        <Route exact path="/" render={(props) => (<Home {...props} search={search} />)} />
-        <Route exact path="/Game" render={(props) => (<Game {...props} click={click} result={gameState.result} gameOver={props.gameOver} />)} />
+        <Route exact path="/memory-game/" render={(props) => (<Home {...props} search={search} />)} />
+        <Route exact path="/memory-game/Game" render={(props) => (<Game {...props} click={click} result={gameState.result} gameOver={props.gameOver} />)} />
 
       </div>
     </Router>
