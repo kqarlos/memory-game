@@ -31,11 +31,9 @@ function App() {
         console.log("GAME STATE AFTER API SEARCH")
         console.log(gameState);
       })
-    // .catch(err => gameModel.setError(err));
   }
 
   function click(index) {
-    // console.log(index);
     if (gameState.clicked[index]) {
       gameState.gameOver = true;
       setGameState({
@@ -46,7 +44,12 @@ function App() {
       });
     } else {
       gameState.clicked[index] = true;
-      gameState.result = shuffle(gameState.result);
+      setGameState({
+        theme: gameState.theme,
+        result: shuffle(gameState.result),
+        gameOver: gameState.gameOver,
+        clicked: gameState.clicked
+      });
     }
     console.log("GAME STATE AFTER CLICK")
     console.log(gameState);
