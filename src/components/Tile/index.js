@@ -1,11 +1,11 @@
 import React from "react";
 import "./style.css";
 
-function Tile({ image }) {
+function Tile({ click, image }) {
     return (
-            <div className="col-4">
-                <img className="mb-3 img-thumbnail" src={image} alt={image} />
-            </div>
+        <div onClick={() => click(image)} className="col-4">
+            <img className="mb-3 img-thumbnail" src={image} alt={image} />
+        </div>
     );
 }
 

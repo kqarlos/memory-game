@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import GameContext from "../../utils/GameContext";
-// import API from "../../utils/API";
-
 
 const Home = ({ search }) => {
-    // const gameModel = useContext(GameContext);
-    // const { gameState, setGameState } = useContext(GameContext);
-    // console.log(search);
 
     return (
         <div className="container mt-4">

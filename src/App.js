@@ -4,26 +4,19 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Game from "./pages/Game";
-// import GameModel from "./utils/GameModel";
-// import GameContext from "./utils/GameContext";
 import API from "./utils/API";
 
 
 function App() {
-  // const gameModel = GameModel();
   const [gameState, setGameState] = useState({
     theme: "",
-    result: []
+    result: [],
+    gameOver: false,
+    clicked: {}
   });
 
-  // function updateResult(result) {
-  //   setGameState({...gameState, result});
-  // }
 
   function search(e) {
-    console.log("SEARCHING");
-    // console.log("EVENT");
-    // console.log(e.target.value);
 
     gameState.theme = e.target.value;
 
@@ -36,29 +29,38 @@ function App() {
           throw new Error(res.data.message);
         }
         gameState.result = res.data.data;
-        console.log("GAME STATE")
+        console.log("GAME STATE AFTER API SEARCH")
         console.log(gameState);
       })
     // .catch(err => gameModel.setError(err));
   }
 
-  // useEffect(() => {
-  //   // console.log("+++++++++++++++++++++++++++++++++++");
-  //   // console.log("APP: GAME STATE");
-  //   // console.log(gameState);
-  //   // console.log("+++++++++++++++++++++++++++++++++++");
-  // }, []);
+  function click(index) {
+    // console.log(index);
+    if (gameState.clicked[index]) {
+      gameState.gameOver = true;
+    } else {
+      gameState.clicked[index] = true;
+      gameState.result = gameState.result.sort(() => Math.random() - 0.5);
+    }
+    console.log("GAME STATE AFTER CLICK")
+    console.log(gameState);
+  }
+
+
+  useEffect(() => {
+    if (gameState.gameOver) {
+      console.log("GAME OVER!!!!!!!!!!!!!!!!!");
+
+   }
+  }, gameState.result);
 
   return (
-
     <Router>
       <div>
         <Navbar />
-        {/* <GameContext.Provider value={gameState}> */}
-          <Route exact path="/" render={(props) => (<Home {...props} search={search} />)} />
-          <Route exact path="/Game" render={(props) => (<Game {...props} result={gameState.result} />)} />
-        {/* </GameContext.Provider> */}
-
+        <Route exact path="/" render={(props) => (<Home {...props} search={search} />)} />
+        <Route exact path="/Game" render={(props) => (<Game {...props} click={click} result={gameState.result} gameOver={props.gameOver} />)} />
 
       </div>
     </Router>
