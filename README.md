@@ -2,25 +2,11 @@
 
 Choose a game theme and start playing. Only click each image once. Click twice and it's game over
 
-## Getting Started
-
-Run the application with npm start
-
-
 ## Site Pictures
 
-1. 
+1. Live site
 
-![Site](assets/images/.png)
-
-2. 
-
-![Site](assets/images/.png)
-
-
-3. 
-
-![Site](assets/images/.png)
+![Site](./public/live.gif)
 
 ## Code Snippets
 
