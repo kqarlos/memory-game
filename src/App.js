@@ -15,7 +15,6 @@ function App() {
     clicked: {}
   });
 
-
   function search(e) {
 
     gameState.theme = e.target.value;
@@ -39,20 +38,34 @@ function App() {
     // console.log(index);
     if (gameState.clicked[index]) {
       gameState.gameOver = true;
+      setGameState({
+        theme: "",
+        result: [],
+        gameOver: false,
+        clicked: {}
+      });
     } else {
       gameState.clicked[index] = true;
-      gameState.result = gameState.result.sort(() => Math.random() - 0.5);
+      gameState.result = shuffle(gameState.result);
     }
     console.log("GAME STATE AFTER CLICK")
     console.log(gameState);
   }
 
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    return array;
+  }
 
   useEffect(() => {
     if (gameState.gameOver) {
       console.log("GAME OVER!!!!!!!!!!!!!!!!!");
 
-   }
+    }
   }, gameState.result);
 
   return (
