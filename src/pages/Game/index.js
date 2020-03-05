@@ -13,7 +13,7 @@ class Game extends Component {
                 <div>
                     <h2 className="display-4 mb-3">GAME OVER!! You Scored {this.props.coins} points!</h2>
 
-                    <Link onClick={this.props.resetGame} to="/" className="btn btn-warning btn-lg" role="button">
+                    <Link onClick={this.props.resetGame} to="/memory-game/" className="btn btn-warning btn-lg" role="button">
                         Play Again <i className="fas fa-gamepad"></i>
                     </Link>
 

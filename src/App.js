@@ -90,8 +90,8 @@ function App() {
     <Router>
       <div>
         <Navbar />
-        <Route exact path="/" render={(props) => (<Home {...props} search={search} startGame={startGame} />)} />
-        <Route exact path="/Game" render={(props) => (<Game {...props}
+        <Route exact path="/memory-game/" render={(props) => (<Home {...props} search={search} startGame={startGame} />)} />
+        <Route exact path="/memory-game/Game" render={(props) => (<Game {...props}
           click={click} coins={gameState.coins} resetGame={resetState} playing={gameState.playing} result={gameState.result} gameOver={gameState.gameOver} />)} />
 
       </div>

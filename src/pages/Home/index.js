@@ -22,7 +22,7 @@ const Home = ({ search, startGame }) => {
                 </select>
                 <p className="lead py-3">
 
-                    <Link to="/Game" onClick={startGame} className="btn btn-warning btn-lg" role="button">
+                    <Link to="/memory-game/Game" onClick={startGame} className="btn btn-warning btn-lg" role="button">
                         Get Playing <i className="fas fa-gamepad"></i>
                     </Link>
 
