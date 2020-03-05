@@ -17,23 +17,22 @@ Choose a game theme and start playing. Only click each image once. Click twice a
 
   function click(index) {
     if (gameState.clicked[index]) {
-      setGameState({
-        theme: "",
-        result: [],
-        gameOver: true,
-        clicked: {}
-      });
+      console.log("GAME OVER");
+      setGameState(state => ({
+        ...state,
+        gameOver: true
+      }));
     } else {
+      console.log("KEEP PLAYING");
       gameState.clicked[index] = true;
-      setGameState({
-        theme: gameState.theme,
-        result: shuffle(gameState.result),
-        gameOver: gameState.gameOver,
-        clicked: gameState.clicked
-      });
+      setGameState(state => ({
+        ...state,
+        coins: state.coins + 1,
+        clicked: state.clicked,
+        result: shuffle(gameState.result)
+      }));
     }
-    console.log("GAME STATE AFTER CLICK")
-    console.log(gameState);
+    console.log("GAME STATE AFTER CLICK", gameState);
   }
     
 ```
@@ -44,21 +43,34 @@ Choose a game theme and start playing. Only click each image once. Click twice a
 
 ```javascript
 
-    renderPage() {
-        if (this.props.gameOver) {
+    checkGameStatus() {
+        console.log("Props", this.props);
+        if (this.props.gameOver || this.props.result.length === 0) {
             return (
                 <div>
-                    <h1 className="display-4 mb-3">GAME OVER!!</h1>
-                    <Link to="/memory-game/" className="btn btn-warning btn-lg" role="button">
-                        Go Back <i className="fas fa-gamepad"></i>
+                    <h2 className="display-4 mb-3">GAME OVER!! You Scored {this.props.coins} points!</h2>
+
+                    <Link onClick={this.props.resetGame} to="/memory-game/" className="btn btn-warning btn-lg" role="button">
+                        Play Again <i className="fas fa-gamepad"></i>
                     </Link>
+
                 </div>
             );
-        } else {
-            return (<h1 className="display-4 mb-3">Click each image only once... Go!</h1>)
+
+        } else if (this.props.playing) {
+            return (
+
+                <div>
+                    <h2 className="display-4 mb-3">Click each gif only once... Go!</h2>
+                    <div className="row">
+                        {this.props.result.map((gif, i) => (
+                            <Tile key={i} click={this.props.click} image={gif.images.original.url} />
+                        ))}
+                    </div>
+                </div>
+            )
         }
     }
-
 ```
 * It renders an short instruction message if the game is still going. If the game is over it will display a message of game over and a button to go back to the home page.
 

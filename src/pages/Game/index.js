@@ -3,31 +3,29 @@ import { Link } from "react-router-dom";
 import Tile from "../../components/Tile"
 import "./style.css";
 
-class Game extends Component {
+const Game = (props) => {
 
-
-    checkGameStatus() {
-        console.log("Props", this.props);
-        if (this.props.gameOver || this.props.result.length === 0) {
+    function checkGameStatus() {
+        if (props.gameOver || props.result.length === 0) {
             return (
                 <div>
-                    <h2 className="display-4 mb-3">GAME OVER!! You Scored {this.props.coins} points!</h2>
+                    <h2 className="display-4 mb-3">GAME OVER!! You Scored {props.coins} points!</h2>
 
-                    <Link onClick={this.props.resetGame} to="/memory-game/" className="btn btn-warning btn-lg" role="button">
+                    <Link onClick={props.resetGame} to="/memory-game/" className="btn btn-warning btn-lg" role="button">
                         Play Again <i className="fas fa-gamepad"></i>
                     </Link>
 
                 </div>
             );
 
-        } else if (this.props.playing) {
+        } else if (props.playing) {
             return (
 
                 <div>
                     <h2 className="display-4 mb-3">Click each gif only once... Go!</h2>
                     <div className="row">
-                        {this.props.result.map((gif, i) => (
-                            <Tile key={i} click={this.props.click} image={gif.images.original.url} />
+                        {props.result.map((gif, i) => (
+                            <Tile key={i} click={props.click} image={gif.images.original.url} />
                         ))}
                     </div>
                 </div>
@@ -35,17 +33,15 @@ class Game extends Component {
         }
     }
 
-    render() {
-        return (
-            <div className="container mt-4">
-                <div className="jumbotron text-center">
+    return (
+        <div className="container mt-4">
+            <div className="jumbotron text-center">
+                {checkGameStatus()}
+            </div>
+        </div >
+    );
 
-                    {this.checkGameStatus()}
 
-                </div>
-            </div >
-        );
-    }
 
 
 }
