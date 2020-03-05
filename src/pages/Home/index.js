@@ -11,10 +11,14 @@ const Home = ({ search, startGame }) => {
                 <select className="form-control form-control-lg" onChange={search}>
                     <option value="?"></option>
                     <option value="theoffice">The Office</option>
-                    <option value="brooklynninenine">Brooklyn Nine Nine</option>
-                    <option value="parksandrec">Parks and Recreation</option>
                     <option value="rickandmorty">Rick And Morty</option>
+                    <option value="brooklynninenine">Brooklyn Nine Nine</option>
+                    <option value="americandad">American Dad</option>
+                    <option value="parksandrec">Parks and Recreation</option>
+                    <option value="thesimpsons">The Simpsons</option>
                     <option value="supernatural">Supernatural</option>
+                    <option value="adventuretime">Adventure Time</option>
+
                 </select>
                 <p className="lead py-3">
 
