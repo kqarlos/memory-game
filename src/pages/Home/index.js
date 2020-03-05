@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Home = ({ search }) => {
+const Home = ({ search, startGame }) => {
 
     return (
         <div className="container mt-4">
@@ -9,7 +9,7 @@ const Home = ({ search }) => {
                 <h1 className="display-4">Test your memory skills with this game</h1>
                 <p className="lead my-2">Select your theme:</p>
                 <select className="form-control form-control-lg" onChange={search}>
-                    <option value=""></option>
+                    <option value="?"></option>
                     <option value="theoffice">The Office</option>
                     <option value="brooklynninenine">Brooklyn Nine Nine</option>
                     <option value="parksandrec">Parks and Recreation</option>
@@ -18,7 +18,7 @@ const Home = ({ search }) => {
                 </select>
                 <p className="lead py-3">
 
-                    <Link to="/memory-game/Game" className="btn btn-warning btn-lg" role="button">
+                    <Link to="/Game" onClick={startGame} className="btn btn-warning btn-lg" role="button">
                         Get Playing <i className="fas fa-gamepad"></i>
                     </Link>
 

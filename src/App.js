@@ -9,55 +9,43 @@ import API from "./utils/API";
 
 function App() {
   const [gameState, setGameState] = useState({
-    theme: "",
     result: [],
     gameOver: false,
-    clicked: {}
+    clicked: {},
+    playing: false,
+    coins: 0
   });
 
   function search(e) {
-
-    gameState.theme = e.target.value;
-
-    API.searchTiles(gameState.theme)
+    console.log("SEARCHING FOR", e.target.value);
+    API.searchTiles(e.target.value)
       .then(res => {
-        if (res.data.length === 0) {
-          throw new Error("No results found.");
-        }
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        setGameState({
-          theme: gameState.theme,
-          result: res.data.data,
-          gameOver: false,
-          clicked: {}
-        });
-        // gameState.result = res.data.data;
-        console.log("GAME STATE AFTER API SEARCH")
-        console.log(gameState);
-      })
+        console.log("API SEARCH RESULTS", res.data.data);
+        setGameState(state => ({
+          ...state,
+          result: res.data.data
+        }));
+      });
   }
 
   function click(index) {
     if (gameState.clicked[index]) {
-      setGameState({
-        theme: "",
-        result: [],
-        gameOver: true,
-        clicked: {}
-      });
+      console.log("GAME OVER");
+      setGameState(state => ({
+        ...state,
+        gameOver: true
+      }));
     } else {
+      console.log("KEEP PLAYING");
       gameState.clicked[index] = true;
-      setGameState({
-        theme: gameState.theme,
-        result: shuffle(gameState.result),
-        gameOver: gameState.gameOver,
-        clicked: gameState.clicked
-      });
+      setGameState(state => ({
+        ...state,
+        coins: state.coins + 1,
+        clicked: state.clicked,
+        result: shuffle(gameState.result)
+      }));
     }
-    console.log("GAME STATE AFTER CLICK")
-    console.log(gameState);
+    console.log("GAME STATE AFTER CLICK", gameState);
   }
 
   function shuffle(array) {
@@ -65,23 +53,46 @@ function App() {
       let j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
-
     return array;
   }
+
+  function startGame() {
+    if (gameState.result.length > 0) {
+      setGameState(state => ({
+        ...state,
+        playing: true
+      }));
+      console.log("GAME STATE AFTER START GAME", gameState);
+    }
+  }
+
+  function resetState() {
+    setGameState(state => ({
+      ...state,
+      result: [],
+      gameOver: false,
+      clicked: {},
+      playing: false,
+      coins: 0
+    }));
+    console.log("GAME STATE AFTER RESETING GAME", gameState);
+  }
+
 
   useEffect(() => {
     if (gameState.gameOver) {
       console.log("GAME OVER!!!!!!!!!!!!!!!!!");
 
     }
-  }, gameState.result);
+  }, []);
 
   return (
     <Router>
       <div>
         <Navbar />
-        <Route exact path="/memory-game/" render={(props) => (<Home {...props} search={search} />)} />
-        <Route exact path="/memory-game/Game" render={(props) => (<Game {...props} click={click} result={gameState.result} gameOver={gameState.gameOver} />)} />
+        <Route exact path="/" render={(props) => (<Home {...props} search={search} startGame={startGame} />)} />
+        <Route exact path="/Game" render={(props) => (<Game {...props}
+          click={click} coins={gameState.coins} resetGame={resetState} playing={gameState.playing} result={gameState.result} gameOver={gameState.gameOver} />)} />
 
       </div>
     </Router>
