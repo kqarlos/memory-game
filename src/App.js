@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Game from "./pages/Game";
 import API from "./utils/API";
+import Wrapper from "./components/Wrapper";
 
 
 function App() {
@@ -80,20 +81,18 @@ function App() {
 
 
   useEffect(() => {
-    if (gameState.gameOver) {
-      console.log("GAME OVER!!!!!!!!!!!!!!!!!");
-
-    }
+  
   }, []);
 
   return (
     <Router>
       <div>
         <Navbar />
-        <Route exact path="/memory-game/" render={(props) => (<Home {...props} search={search} startGame={startGame} />)} />
-        <Route exact path="/memory-game/Game" render={(props) => (<Game {...props}
-          click={click} coins={gameState.coins} resetGame={resetState} playing={gameState.playing} result={gameState.result} gameOver={gameState.gameOver} />)} />
-
+        <Wrapper>
+          <Route exact path="/memory-game/" render={(props) => (<Home {...props} search={search} startGame={startGame} />)} />
+          <Route exact path="/memory-game/Game" render={(props) => (<Game {...props}
+            click={click} coins={gameState.coins} resetGame={resetState} playing={gameState.playing} result={gameState.result} gameOver={gameState.gameOver} />)} />
+        </Wrapper>
       </div>
     </Router>
   );

@@ -1,10 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Tile from "../../components/Tile"
 import "./style.css";
 
 const Game = (props) => {
 
+    //function checks whether the game is over, or if the result from the API call to get the images is empty.
+    //If the game is over or the result is empty, this function will return a message with the score and a button to go back to the homepage
+    //If the user is still playing this function will return a grid of the 9 images in the result array.
     function checkGameStatus() {
         if (props.gameOver || props.result.length === 0) {
             return (
@@ -34,11 +37,9 @@ const Game = (props) => {
     }
 
     return (
-        <div className="container mt-4">
-            <div className="jumbotron text-center">
-                {checkGameStatus()}
-            </div>
-        </div >
+        <div>
+            {checkGameStatus()}
+        </div>
     );
 
 
