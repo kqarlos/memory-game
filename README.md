@@ -1,6 +1,6 @@
 # Memory Game
 
-Choose a game theme and start playing. Only click each image once. Click twice and it's game over
+Choose a game theme and start playing. Only click each image once. Click twice and it's game over.
 
 ## Site Pictures
 
@@ -36,7 +36,7 @@ Choose a game theme and start playing. Only click each image once. Click twice a
   }
     
 ```
-* This function updates the _gameState_. The game logic depends on the _clicked_ object. This object keeps track of the images that are clicked by the user. Since the images are shuffled after every click, the "index" refers to the source link for the image instead of an actual index of the image in the _result_ array. The _gameState_ is updated after every click so that either the shuffle images are displayed to the user if the game is not over, or display a message and a button to go back if the game is over. 
+* This function updates the _gameState.clicked_ object. This object keeps track of the images that are clicked by the user. Since the images are shuffled after every click, the _index_ in _clicked_ refers to the source link for the image gottent from _gameStame.result_. If the clicked image is not in the _clicked_ object, the game is not over and we need to shuffle the images. If the clicked image is already in the _clicked_ object, the game is over.
 
 
 2. Conditional rendering
@@ -44,27 +44,25 @@ Choose a game theme and start playing. Only click each image once. Click twice a
 ```javascript
 
     checkGameStatus() {
-        console.log("Props", this.props);
-        if (this.props.gameOver || this.props.result.length === 0) {
+        if (props.gameOver || props.result.length === 0) {
             return (
                 <div>
-                    <h2 className="display-4 mb-3">GAME OVER!! You Scored {this.props.coins} points!</h2>
+                    <h2 className="display-4 mb-3">GAME OVER!! You Scored {props.coins} points!</h2>
 
-                    <Link onClick={this.props.resetGame} to="/memory-game/" className="btn btn-warning btn-lg" role="button">
+                    <Link onClick={props.resetGame} to="/memory-game/" className="btn btn-warning btn-lg" role="button">
                         Play Again <i className="fas fa-gamepad"></i>
                     </Link>
 
                 </div>
             );
 
-        } else if (this.props.playing) {
+        } else if (props.playing) {
             return (
-
                 <div>
                     <h2 className="display-4 mb-3">Click each gif only once... Go!</h2>
                     <div className="row">
-                        {this.props.result.map((gif, i) => (
-                            <Tile key={i} click={this.props.click} image={gif.images.original.url} />
+                        {props.result.map((gif, i) => (
+                            <Tile key={i} click={props.click} image={gif.images.original.url} />
                         ))}
                     </div>
                 </div>
@@ -72,7 +70,8 @@ Choose a game theme and start playing. Only click each image once. Click twice a
         }
     }
 ```
-* It renders an short instruction message if the game is still going. If the game is over it will display a message of game over and a button to go back to the home page.
+* If the user is playing, function will return a short instructions message and a grid of all the images. If the game is over or if the result array is empty, it will return a game over message, a score, and a button to go back to the homepage. 
+
 
 
 ## Available Scripts for cloned repos
@@ -96,6 +95,21 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
+
+
+## Deployment to Github Pages
+
+* In package.json, add new key:
+  *  _homepage_: [Value is published link copied from GitHub Pages section in settings]
+* Make sure gh-pages package is installed. Run: 
+  * npm install --save gh-pages
+* In package.json, under scripts, add two keys:
+  * predeploy: npm run build
+  * deploy: gh-pages -d build
+* Run in terminal:
+  * npm run deploy
+* Make sure under settings in Github the source is to gh-pages branch
+
 
 ## Built With
 
@@ -121,12 +135,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 - [Link to Github](https://www.github.com/kqarlos)
 - [Link to LinkedIn](https://www.linkedin.com/in/carlos-toledo415/)
 
-
-## Acknowledgments
-
-* [Bootstrap components](https://getbootstrap.com/docs/4.4/components/navbar/)
-* [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
-* [Create React App](https://github.com/facebook/create-react-app).
 
 
 
