@@ -144,7 +144,7 @@ In the project directory, you can run:
 
 
 
-## Credit
+## Credits
 
 ### Author
 
