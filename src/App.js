@@ -47,11 +47,13 @@ function App() {
       }));
     } else {
       console.log("KEEP PLAYING");
-      gameState.clicked[index] = true;
       setGameState(state => ({
         ...state,
         coins: state.coins + 1,
-        clicked: state.clicked,
+        clicked: {
+          ...state.clicked,
+          [index]: true
+        },
         result: shuffle(gameState.result)
       }));
     }

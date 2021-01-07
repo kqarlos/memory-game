@@ -15,7 +15,7 @@ const Home = ({ setTheme, startGame }) => {
             <h1 className="display-4">Test your memory skills with this game</h1>
             <p className="lead my-2">Select your theme:</p>
             <select className="form-control form-control-lg" onChange={updateTheme}>
-                <option value="?"></option>
+                <option className="text-secondary" value="coco">Choose a value</option>
                 <option value="theoffice">The Office</option>
                 <option value="rickandmorty">Rick And Morty</option>
                 <option value="brooklynninenine">Brooklyn Nine Nine</option>
