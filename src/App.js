@@ -17,9 +17,9 @@ function App() {
     coins: 0
   });
 
-  function search(e) {
-    console.log("SEARCHING FOR", e.target.value);
-    API.searchTiles(e.target.value)
+  function search(theme) {
+    console.log("SEARCHING FOR", theme);
+    API.searchTiles(theme)
       .then(res => {
         console.log("API SEARCH RESULTS", res.data.data);
         setGameState(state => ({
@@ -59,6 +59,13 @@ function App() {
 
   function startGame() {
     if (gameState.result.length > 0) {
+      setGameState(state => ({
+        ...state,
+        playing: true
+      }));
+      console.log("GAME STATE AFTER START GAME", gameState);
+    } else {
+      search("coco");
       setGameState(state => ({
         ...state,
         playing: true

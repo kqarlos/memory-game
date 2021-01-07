@@ -5,11 +5,16 @@ const Home = ({ search, startGame }) => {
 
     //return a jumbotron with a select option form. When the option is changed, the search function is called.
     //The search function will update the gameState
+
+    function setTheme(e) {
+        search(e.target.value);
+    }
+
     return (
         <div>
             <h1 className="display-4">Test your memory skills with this game</h1>
             <p className="lead my-2">Select your theme:</p>
-            <select className="form-control form-control-lg" onChange={search}>
+            <select className="form-control form-control-lg" onChange={setTheme}>
                 <option value="?"></option>
                 <option value="theoffice">The Office</option>
                 <option value="rickandmorty">Rick And Morty</option>
