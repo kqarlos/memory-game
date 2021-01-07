@@ -9,7 +9,7 @@ const Game = (props) => {
     //If the game is over or the result is empty, this function will return a message with the score and a button to go back to the homepage
     //If the user is still playing this function will return a grid of the 9 images in the result array.
     function checkGameStatus() {
-        if (props.gameOver || props.result.length === 0) {
+        if (props.gameOver) {
             return (
                 <div>
                     <h2 className="display-4 mb-3">GAME OVER!! You Scored {props.coins} points!</h2>

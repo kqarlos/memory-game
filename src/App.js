@@ -10,12 +10,21 @@ import Wrapper from "./components/Wrapper";
 
 function App() {
   const [gameState, setGameState] = useState({
+    theme: "",
     result: [],
     gameOver: false,
     clicked: {},
     playing: false,
     coins: 0
   });
+
+
+  function setTheme(theme) {
+    setGameState(state => ({
+      ...state,
+      theme: theme
+    }));
+  }
 
   function search(theme) {
     console.log("SEARCHING FOR", theme);
@@ -58,20 +67,18 @@ function App() {
   }
 
   function startGame() {
-    if (gameState.result.length > 0) {
-      setGameState(state => ({
-        ...state,
-        playing: true
-      }));
-      console.log("GAME STATE AFTER START GAME", gameState);
-    } else {
+    if (!gameState.theme) {
+      setTheme("coco");
       search("coco");
-      setGameState(state => ({
-        ...state,
-        playing: true
-      }));
-      console.log("GAME STATE AFTER START GAME", gameState);
+    } else {
+      search(gameState.theme);
     }
+    setGameState(state => ({
+      ...state,
+      playing: true
+    }));
+    console.log("GAME STATE AFTER START GAME", gameState);
+
   }
 
   function resetState() {
@@ -88,7 +95,7 @@ function App() {
 
 
   useEffect(() => {
-  
+
   }, []);
 
   return (
@@ -96,7 +103,7 @@ function App() {
       <div>
         <Navbar />
         <Wrapper>
-          <Route exact path="/memory-game/" render={(props) => (<Home {...props} search={search} startGame={startGame} />)} />
+          <Route exact path="/memory-game/" render={(props) => (<Home {...props} setTheme={setTheme} startGame={startGame} />)} />
           <Route exact path="/memory-game/Game" render={(props) => (<Game {...props}
             click={click} coins={gameState.coins} resetGame={resetState} playing={gameState.playing} result={gameState.result} gameOver={gameState.gameOver} />)} />
         </Wrapper>
