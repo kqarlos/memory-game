@@ -1,14 +1,84 @@
-# Memory Game
+# Memory Game 🎮
 
-Choose a game theme and start playing. Only click each image once. Click twice and it's game over.
+</br>
+<p align="center">
+    <img src="https://img.shields.io/github/languages/count/kqarlos/memory-game?style=for-the-badge" alt="Languages" />
+    <img src="https://img.shields.io/github/languages/top/kqarlos/memory-game?style=for-the-badge" alt="Top Language" />
+    <img src="https://img.shields.io/github/languages/code-size/kqarlos/memory-game?style=for-the-badge" alt="Code Size" />
+    <img src="https://img.shields.io/github/repo-size/kqarlos/memory-game?style=for-the-badge" alt="Repo Size" />   
+    <img src="https://img.shields.io/tokei/lines/github/kqarlos/memory-game?style=for-the-badge" alt="Total Lines" />
+    <img src="https://img.shields.io/github/package-json/dependency-version/kqarlos/memory-game/gh-pages?style=for-the-badge" alt="GH-Pages Version" />
+    <img src="https://img.shields.io/github/package-json/dependency-version/kqarlos/memory-game/react?style=for-the-badge" alt="react Version" />
+    <img src="https://img.shields.io/github/package-json/dependency-version/kqarlos/memory-game/react-dom?style=for-the-badge" alt="React-Dom Version" />
+    <img src="https://img.shields.io/github/package-json/dependency-version/kqarlos/memory-game/react-router-dom?style=for-the-badge" alt="React-Router-Dom Version" />
+    <img src="https://img.shields.io/github/last-commit/kqarlos/memory-game?style=for-the-badge" alt="Last Commit" />  
+    <img src="https://img.shields.io/github/issues/kqarlos/memory-game?style=for-the-badge" alt="Issues" />  
+    <img src="https://img.shields.io/github/followers/kqarlos?style=social" alt="Followers" />  
+</p>
 
-## Site Pictures
+## Description
+
+Choose a game theme and start playing! Only click each image once. Click twice and it's game over.
+
+## Table of Contents
+
+* [Installation](#installation)
+* [Usage](#usage)
+    * [Screenshots](#screenshots)
+    * [Snippets](#snippets)
+* [Credits](#credits)
+* [License](#license)
+
+## Installation
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+
+## Deployment to Github Pages
+
+* In package.json, add new key:
+  *  _homepage_: [Value is published link copied from GitHub Pages section in settings]
+* Make sure gh-pages package is installed. Run: 
+  * npm install --save gh-pages
+* In package.json, under scripts, add two keys:
+  * predeploy: npm run build
+  * deploy: gh-pages -d build
+* Run in terminal:
+  * npm run deploy
+* Make sure under settings in Github the source is to gh-pages branch
+
+
+<p align="center">
+    <a href="https://kqarlos.github.io/memory-game"><img src="https://img.shields.io/badge/-👉 See Live Site-success?style=for-the-badge"  alt="Live Site" /></a>
+</p>
+
+## Usage
+
+### Screenshot
 
 1. Live site
 
 ![Site](./public/live.gif)
 
-## Code Snippets
+### Snippets
 
 
 1. Image clicked
@@ -74,44 +144,25 @@ Choose a game theme and start playing. Only click each image once. Click twice a
 
 
 
-## Available Scripts for cloned repos
+## Credit
 
-In the project directory, you can run:
+### Author
 
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-
-## Deployment to Github Pages
-
-* In package.json, add new key:
-  *  _homepage_: [Value is published link copied from GitHub Pages section in settings]
-* Make sure gh-pages package is installed. Run: 
-  * npm install --save gh-pages
-* In package.json, under scripts, add two keys:
-  * predeploy: npm run build
-  * deploy: gh-pages -d build
-* Run in terminal:
-  * npm run deploy
-* Make sure under settings in Github the source is to gh-pages branch
-
+- 💼 Carlos Toledo: [portfolio](https://professional-portfolio2020.herokuapp.com/)
+- :octocat: Github: [kqarlos](https://www.github.com/kqarlos)
+- LinkedIn: [carlos-toledo415](https://www.linkedin.com/in/carlos-toledo415/)
 
 ## Built With
+
+</br>
+<p align="center">
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://img.shields.io/badge/-HTML-orange?style=for-the-badge"  alt="HMTL" /></a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/-CSS-blue?style=for-the-badge" alt="CSS" /></a>
+    <a href="https://www.javascript.com/"><img src="https://img.shields.io/badge/-Javascript-yellow?style=for-the-badge" alt="Javascript" /></a>
+    <a href="https://getbootstrap.com/"><img src="https://img.shields.io/badge/-Bootstrap-blue?style=for-the-badge" alt="Bootstrap" /></a>
+    <a href="https://nodejs.org/en/"><img src="https://img.shields.io/badge/-Node-orange?style=for-the-badge" alt="Node" /></a>
+    <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/-React-blue?style=for-the-badge" alt="React" /></a>
+</p>
 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -120,26 +171,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 * [Node.js](https://nodejs.org/en/)
 * [React](https://reactjs.org/)
 
+## License
 
-## Deployed Link
-
-* [See Live Site](https://kqarlos.github.io/memory-game)
-
-## Author
-
- * **Carlos Toledo** 
-
-## Links
-
-- [Link to site repository](https://github.com/kqarlos/memory-game)
-- [Link to Github](https://www.github.com/kqarlos)
-- [Link to LinkedIn](https://www.linkedin.com/in/carlos-toledo415/)
-
-
-
-
-
-
+</br>
+<p align="center">
+    <img align="center" src="https://img.shields.io/github/license/kqarlos/memory-game?style=for-the-badge" alt="MIT license" />
+</p>
 
 
 
