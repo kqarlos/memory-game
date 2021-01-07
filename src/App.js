@@ -86,6 +86,7 @@ function App() {
   function resetState() {
     setGameState(state => ({
       ...state,
+      theme: "",
       result: [],
       gameOver: false,
       clicked: {},
