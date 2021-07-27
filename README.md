@@ -148,7 +148,7 @@ In the project directory, you can run:
 
 ### Author
 
-- 💼 Carlos Toledo: [portfolio](https://professional-portfolio2020.herokuapp.com/)
+- 💼 Carlos Toledo: [portfolio](https://kqarlos.github.io)
 - :octocat: Github: [kqarlos](https://www.github.com/kqarlos)
 - LinkedIn: [carlos-toledo415](https://www.linkedin.com/in/carlos-toledo415/)
 
